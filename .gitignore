@@ -1,0 +1,14 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IPYNB checkpoints
+.ipynb_checkpoints/
+
+# Local configuration and system files
+.qoder/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

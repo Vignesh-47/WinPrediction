@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Win Probability Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/84/Indian_Premier_League_Official_Logo.svg/1200px-Indian_Premier_League_Official_Logo.svg.png" alt="IPL Logo" class="top-left-logo">
+    
+    <main class="glass-panel">
+        <header>
+            <h1>IPL Win Predictor</h1>
+            <p>Predict the 2nd innings run chase in real-time</p>
+        </header>
+
+        <form id="prediction-form">
+            <div class="input-grid">
+                <div class="input-group">
+                    <label>Batting Team</label>
+                    <select id="batting-team" required>
+                        <option value="" disabled selected>Select Batting Team</option>
+                        <option value="Chennai Super Kings">Chennai Super Kings</option>
+                        <option value="Delhi Capitals">Delhi Capitals</option>
+                        <option value="Kings XI Punjab">Kings XI Punjab</option>
+                        <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                        <option value="Mumbai Indians">Mumbai Indians</option>
+                        <option value="Rajasthan Royals">Rajasthan Royals</option>
+                        <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                        <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Bowling Team</label>
+                    <select id="bowling-team" required>
+                        <option value="" disabled selected>Select Bowling Team</option>
+                        <option value="Chennai Super Kings">Chennai Super Kings</option>
+                        <option value="Delhi Capitals">Delhi Capitals</option>
+                        <option value="Kings XI Punjab">Kings XI Punjab</option>
+                        <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                        <option value="Mumbai Indians">Mumbai Indians</option>
+                        <option value="Rajasthan Royals">Rajasthan Royals</option>
+                        <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                        <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                    </select>
+                </div>
+                
+                <div class="input-group full-width">
+                    <label>Host City</label>
+                    <select id="city" required>
+                        <option value="" disabled selected>Select City</option>
+                        <!-- Cities options will be injected by JS -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="input-group">
+                    <label>Target Score</label>
+                    <input type="number" id="target" placeholder="e.g. 185" required min="1">
+                </div>
+                <div class="input-group">
+                    <label>Current Score</label>
+                    <input type="number" id="score" placeholder="e.g. 120" required min="0">
+                </div>
+                <div class="input-group">
+                    <label>Overs Completed</label>
+                    <input type="number" id="overs" placeholder="e.g. 15.3" required min="0" max="20" step="0.1">
+                </div>
+                <div class="input-group">
+                    <label>Wickets Out</label>
+                    <input type="number" id="wickets" placeholder="e.g. 4" required min="0" max="10">
+                </div>
+            </div>
+
+            <button type="submit" id="predict-btn">
+                <span>Calculate Probability</span>
+            </button>
+        </form>
+
+        <div id="result-container" class="hidden">
+            <h2>Match Prediction</h2>
+            
+            <div class="bars-container">
+                <div class="team-result">
+                    <div class="team-info">
+                        <span id="bat-name" class="team-name">Batting Team</span>
+                        <span id="bat-prob" class="prob batting">--%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div id="bat-bar" class="progress-bar batting-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="team-result">
+                    <div class="team-info">
+                        <span id="bowl-name" class="team-name">Bowling Team</span>
+                        <span id="bowl-prob" class="prob bowling">--%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div id="bowl-bar" class="progress-bar bowling-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
