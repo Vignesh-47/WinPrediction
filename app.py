@@ -51,8 +51,8 @@ st.markdown("""
     /* Buttons */
     div.stButton > button {
         background: linear-gradient(to right, #38bdf8, #8b5cf6) !important;
-        color: white !important;
-        font-size: 1.1rem !important;
+        color: #ffffff !important;
+        font-size: 1.15rem !important;
         font-weight: 600 !important;
         border-radius: 12px !important;
         border: none !important;
@@ -64,10 +64,14 @@ st.markdown("""
         transform: translateY(-2px);
         box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.4) !important;
     }
+    div.stButton > button p {
+        color: #ffffff !important;
+        font-weight: 600 !important;
+    }
     
     /* Input Labels */
-    label p {
-        color: #94a3b8 !important;
+    .stWidgetLabel, label, label p, [data-testid="stWidgetLabel"] p {
+        color: #cbd5e1 !important;
         font-weight: 600 !important;
         text-transform: uppercase !important;
         font-size: 0.85rem !important;
@@ -76,15 +80,15 @@ st.markdown("""
     
     /* Dropdowns and Number Inputs */
     div[data-baseweb="select"] > div {
-        background-color: rgba(0, 0, 0, 0.2) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        color: white !important;
+        background-color: rgba(15, 23, 42, 0.6) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        color: #f8fafc !important;
         border-radius: 10px !important;
     }
     div[data-testid="stNumberInput"] input {
-        background-color: rgba(0, 0, 0, 0.2) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        color: white !important;
+        background-color: rgba(15, 23, 42, 0.6) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        color: #f8fafc !important;
         border-radius: 10px !important;
     }
     </style>
@@ -205,31 +209,31 @@ if st.button('Calculate Probability'):
         win_pct = round(win * 100)
         loss_pct = round(loss * 100)
 
-        # Output Results using Styled Premium Progress Bars
+        # Output Results using Styled Premium Progress Bars (without leading indentation to prevent pre formatting)
         st.markdown(f"""
-            <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); margin-top: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                <h3 style="text-align: center; margin-bottom: 1.5rem; font-weight: 600; color: #f8fafc; font-family: 'Outfit';">MATCH PREDICTION</h3>
-                
-                <!-- Batting Team Result -->
-                <div style="margin-bottom: 1.5rem;">
-                    <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Outfit';">
-                        <span>{batting_team} (Win)</span>
-                        <span style="color: #10b981;">{win_pct}%</span>
-                    </div>
-                    <div style="background: rgba(255,255,255,0.1); height: 14px; border-radius: 10px; overflow: hidden;">
-                        <div style="background: linear-gradient(90deg, #10b981, #059669); width: {win_pct}%; height: 100%; border-radius: 10px;"></div>
-                    </div>
-                </div>
-                
-                <!-- Bowling Team Result -->
-                <div>
-                    <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Outfit';">
-                        <span>{bowling_team} (Win)</span>
-                        <span style="color: #f43f5e;">{loss_pct}%</span>
-                    </div>
-                    <div style="background: rgba(255,255,255,0.1); height: 14px; border-radius: 10px; overflow: hidden;">
-                        <div style="background: linear-gradient(90deg, #f43f5e, #e11d48); width: {loss_pct}%; height: 100%; border-radius: 10px;"></div>
-                    </div>
-                </div>
-            </div>
-        """, unsafe_allow_html=True)
+<div style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); margin-top: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    <h3 style="text-align: center; margin-bottom: 1.5rem; font-weight: 600; color: #f8fafc; font-family: 'Outfit';">MATCH PREDICTION</h3>
+    
+    <!-- Batting Team Result -->
+    <div style="margin-bottom: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Outfit';">
+            <span>{batting_team} (Win)</span>
+            <span style="color: #10b981;">{win_pct}%</span>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); height: 14px; border-radius: 10px; overflow: hidden;">
+            <div style="background: linear-gradient(90deg, #10b981, #059669); width: {win_pct}%; height: 100%; border-radius: 10px;"></div>
+        </div>
+    </div>
+    
+    <!-- Bowling Team Result -->
+    <div>
+        <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 1.15rem; margin-bottom: 0.5rem; font-family: 'Outfit';">
+            <span>{bowling_team} (Win)</span>
+            <span style="color: #f43f5e;">{loss_pct}%</span>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); height: 14px; border-radius: 10px; overflow: hidden;">
+            <div style="background: linear-gradient(90deg, #f43f5e, #e11d48); width: {loss_pct}%; height: 100%; border-radius: 10px;"></div>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
